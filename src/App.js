@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import Menu from "./components/ui/Menu";
+import GetScores from "./components/utility/GetScores";
+import CardContainer from "./components/card/CardContainer";
 
-function App() {
+const App = () => {
+  const showMenu = useSelector((state) => state.menu);
+
+  GetScores();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center items-center h-screen w-screen bg-[#394859]">
+      {showMenu && <Menu />}
+      <CardContainer number={18} />
     </div>
   );
-}
+};
 
 export default App;
